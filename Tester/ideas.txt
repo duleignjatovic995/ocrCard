@@ -1,0 +1,30 @@
+todo:  deskew; tesseract measure;
+konfiguracija tesseract-a; NLP problemi
+
+DONE (almost):
+ - template match for insurance;
+
+
+githubs, Konture(1.), konfiguracija tesseract-a, tesseract-measure, NLP
+
+
+-> 1. Izvuci konture(30-50px) i pokreni tesseract sa config='-psm 7' (treat image as a single text line) // eventualno 8
+-> 2. image>mode>grayscale image>scale image>1191x2000 pixels filters>enhance>unsharp mask with values of radius = 6.8,
+amount = 2.69, threshold = 0 I then saved as a new jpg at 100% quality.
+
+Rezultati:
+-gray->clahe(adaptive hist)->adaptivethesh
+-iteracija: gausblur->adaprivethresh
+-adaptivethresh->swt
+-sqKernel()->morphologyEx(blackhat)->OTSU_inv->(swt)
+-otsu->dilate->erode
+
+FAIL:
+-denoise->ada hist->ada thresh
+
+GITHUB:
+-waste: https://github.com/jasonlfunk/ocr-text-extraction/blob/master/extract_text
+-waste: https://github.com/schollz/python-ocr/blob/master/process_image.py
+-waste: https://github.com/yardstick17/image_text_reader
+-waste: https://github.com/MartijnBraam/cardscan
+-waste: https://github.com/agundy/BusinessCardReader/blob/master/cardscan/findCard.py
